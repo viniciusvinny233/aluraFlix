@@ -1,0 +1,284 @@
+<html>
+
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Major+Mono+Display&family=Roboto+Mono:wght@400;500&family=Train+One&display=swap" rel="stylesheet">
+        <title>Alura flix</title>
+    </head>	
+
+    <a href="https://www.tivit.com/" target="_blank">
+    <img src="https://cdn-app-privally-io.s3.amazonaws.com/env/suite/images/treatment/central/0001/00000263/darkLogo/20210128190636.png" class="tivit" alt="">
+    </a>
+    <body class="main" id="main">
+        <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-aluraflix.svg" class="displayed" alt="" id="imersao">
+        <div class="header-container">
+
+            <a href="https://alura.com.br/" target="_blank">
+                <img src="https://www.alura.com.br/assets/img/home/alura-logo.svg" alt="" class="alura-logo" id="alura-logo">
+            </a> 
+
+            <header>
+                <h1 class="title" id="title">Alura Flix</h1>
+            </header>
+        </div>
+        <div class="op-container">
+            <div class="opcoes">
+            </div>
+            <div class="filmes">
+                <h2 class= "filme-src">Ver catálogo</h2>
+                <button class="botao" id="src-filmes" onclick="mostraFilme()">Filmes</button>
+            </div>
+
+            <a href="https://alura.com.br/" target="_blank">
+                <img src="https://www.alura.com.br/assets/img/home/alura-logo.svg" alt="" class="alura-logo" id="alura-logo">
+            </a> 
+        </div>
+        <div class="filme-grid"id="retornaFilme">
+            
+        </div>
+        <button class="botao" id="voltar" onclick="voltar()">Voltar</button>
+    </body>
+
+</html>
+
+
+<style>
+
+:root{
+        --color-fundo: #839192;
+        --color-shadow: #717D7E;
+        --color-botao: #E90B0B;
+    }
+
+    body{
+        background: url('https://cdnb.artstation.com/p/assets/images/images/014/665/033/original/yargon-kerman-webp-net-gifmaker-39.gif?1544919451');
+        background-size: cover;
+        background-position: center ;
+        background-repeat: no-repeat;
+        height:100vh;
+        background-color: black;
+        overflow-y:hidden;
+        overflow-x:hidden;
+    }
+
+    .header-container{
+        display: flex;
+        justify-content: center;
+        align-items: top;
+        /*height:20vh;*/
+        text-align:center;
+    }
+
+    .title{
+        color: #0fcfd0;
+        margin-top: 10%;
+        font-size: 6em;
+        font-family: 'Bebas Neue', cursive;
+        text-shadow: 5px 5px 10px black
+    }
+
+    .tivit{
+        width: 150px;
+        position: absolute;
+        top: 5px;
+        right: 90%;
+    }
+
+    .op-container{
+        display:flex;
+        justify-content: space-around;
+        flex-direction:row;
+        align-items:flex-start;
+        padding-top: 1.4em;
+        
+    }
+
+    .alura-logo {
+        width: 75px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+   }
+
+
+    .select{
+        height: 30px;
+        margin-bottom: 25px;
+        font-family: 'Roboto Mono', monospace;
+    }
+
+    .list-description, .filme-src{
+        font-family: 'Roboto Mono', monospace;
+    }
+
+    .filmes{
+        display: flex;	
+        flex-direction:column;
+        justify-content: center;
+        align-items:center;
+        
+        height:25vh;
+        width:450px;
+        
+        
+        margin-left: 25px;	
+        margin-top: 3%;
+        
+        background-color: rgba(184, 14, 251, 0.8);
+        border: 2px solid #000;
+        border-radius: 15px;
+        box-shadow: 5px 5px 10px black
+    }
+
+
+    .botao{
+        font-weight: bold;
+        display:flex;
+        justify-content: center;
+        align-items:center;
+        height: 50px;
+        width: 280px;
+        
+        cursor: pointer;
+        
+        color: white;
+        font-size: 1.5em;
+        
+        border: 2px solid #000;
+        border-radius: 15px;
+        background-color: #0fcfd0;
+        
+        box-shadow: 2.1px 2.1px #000;
+    }
+
+    #src-filmes{
+        margin-top: 40px;
+    }
+
+    h2{
+        font-size: xx-large;
+        color: bisque;
+        text-shadow: 2.5px 2.5px 0 #000;
+        margin-bottom: 5%;
+        margin-top: 0%;
+    }
+
+    button:hover{
+        font-style: italic;
+        background-color: #2d9e9e;
+        transition: 0.3s;
+        box-shadow: none;
+    }
+
+    IMG.displayed {
+        display: block;
+        margin-top: 1%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 300; 
+    }
+
+    .filme-grid{
+        display: grid;
+        grid-template-columns: repeat(4,240px);
+        justify-content:space-around;
+        align-content:center;
+        gap: 1em;
+        text-align: center;
+    }
+
+    #voltar{
+        display:none;
+        visibility:hidden;
+        margin-top: -1%;
+        margin-left: 42%;
+
+    }
+
+    a{
+        color: white;
+        font-family: 'Roboto Mono', monospace;
+    }
+
+    a:hover{
+        color: #0fcfd0;
+    }
+
+    p{
+        font-family: 'Roboto Mono', monospace;
+    }
+
+    .colocarFilmes{
+        display: flex;	
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        
+        height:50vh;
+        width:550px;
+        
+        
+        margin-left: 25px;	
+        
+        background-color: rgba(149, 165, 166, 0.8);
+        border: 2px solid var(--color-shadow);
+        border-radius: 15px;
+        box-shadow: 5px 5px 10px black
+    }
+
+    #addPlat{
+        margin-top:15px;
+        margin-bottom:15px;
+    }
+
+    input{
+        height: 18px;
+    }
+
+    label{
+        font-family: 'Roboto Mono', monospace;
+    }
+
+</style>
+
+
+<script>
+
+    var adicionaLista =[];
+
+    var filmeAddUser = [];
+    var filmeAddLink = [];
+
+    var filmeNome = ["Star Wars","A Vida Secreta de Walter Mitty","Interstellar","O Regresso","Coringa","Vingadores: Ultimato","Toy Story","Bastardos Inglórios"];
+
+    var linkTrailer = ["https://www.imdb.com/title/tt2488496/?ref_=fn_tt_tt_18","https://www.imdb.com/title/tt0359950/?ref_=nv_sr_srsg_7","https://www.imdb.com/title/tt0816692/?ref_=nv_sr_srsg_0","https://www.imdb.com/title/tt1663202/?ref_=nv_sr_srsg_0","https://www.imdb.com/title/tt7286456/?ref_=nv_sr_srsg_0","https://www.imdb.com/title/tt4154796/?ref_=nv_sr_srsg_0","https://www.imdb.com/title/tt0114709/?ref_=nv_sr_srsg_0","https://www.imdb.com/title/tt0361748/?ref_=nv_sr_srsg_0"];
+
+    var filmesImagens = ["https://m.media-amazon.com/images/M/MV5BOTAzODEzNDAzMl5BMl5BanBnXkFtZTgwMDU1MTgzNzE@._V1_UX182_CR0,0,182,268_AL_.jpg","https://m.media-amazon.com/images/M/MV5BODYwNDYxNDk1Nl5BMl5BanBnXkFtZTgwOTAwMTk2MDE@._V1_UX182_CR0,0,182,268_AL_.jpg","https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX182_CR0,0,182,268_AL_.jpg","https://m.media-amazon.com/images/M/MV5BMDE5OWMzM2QtOTU2ZS00NzAyLWI2MDEtOTRlYjIxZGM0OWRjXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_UX182_CR0,0,182,268_AL_.jpg","https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX182_CR0,0,182,268_AL_.jpg","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_UX182_CR0,0,182,268_AL_.jpg","https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg","https://m.media-amazon.com/images/M/MV5BOTJiNDEzOWYtMTVjOC00ZjlmLWE0NGMtZmE1OWVmZDQ2OWJhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UX182_CR0,0,182,268_AL_.jpg"];
+
+
+
+    function mostraFilme(){
+        document.getElementById("title").remove(); 
+        document.getElementById("imersao").remove(); 
+        document.querySelector('.op-container').style.visibility ="hidden";
+        document.querySelector('.op-container').style.display ="none";
+        document.getElementById('voltar').style.display = "block";
+        document.getElementById('voltar').style.visibility = "visible"
+        
+        for(let i = 0; i < filmesImagens.length; i++){
+            document.getElementById('retornaFilme').insertAdjacentHTML("beforeend", `<figure><img src="${filmesImagens[i]}"><figcaption><a href="${linkTrailer[i]}" target="-blank">${filmeNome[i]}</a></figcaption></figure> `)
+        }
+        
+    }
+
+    function voltar(){
+        document.querySelector('.op-container').style.visibility ="visible";
+        document.querySelector('.op-container').style.display ="flex";
+        
+        document.getElementById('voltar').style.display = "none";
+        document.getElementById('voltar').style.visibility = "hidden"
+        
+        document.getElementById('retornaFilme').textContent = "";
+    }
+
+</script>
